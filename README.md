@@ -35,4 +35,3 @@
 # Preview
 
 |  ![main_playlist](./screenshoot/prev_1.png)   |        ![main_cloud](./screenshoot/prev_2.png)        | ![playlist_detail](./screenshoot/prev_4.png) | ![artist_detail](./screenshoot/prev5.png) |
-| :------------------------------------------------: | :----------------------------------------------------: | :------------------------------------------------: | 
