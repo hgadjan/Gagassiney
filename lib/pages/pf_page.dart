@@ -11,10 +11,8 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:gagasiney/pages/methode_page.dart';
 import 'package:gagasiney/models/models.dart';
 import 'package:gagasiney/utils/const.dart';
-import 'package:gagasiney/utils/utils.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 class PFScreen extends StatefulWidget {
