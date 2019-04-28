@@ -182,7 +182,7 @@ class MethodeDetailScreenState extends State<MethodeDetailScreen>
                 MethodePresentationScreen(methode: widget.methode,),
                 MethodeAvantageScreen(methode: widget.methode,),
                 MethodeInconvenientScreen(methode: widget.methode,),
-                MethodeInconvenientScreen(methode: widget.methode,),
+                MethodeCentresScreen(methode: widget.methode,),
               ],
             ),
           )
@@ -371,6 +371,7 @@ class MethodePresentationScreenState extends State<MethodePresentationScreen> {
       """,
             //Optional parameters:
             padding: EdgeInsets.all(8.0),
+            defaultTextStyle: TextStyle(fontSize: 20),
             onLinkTap: (url) {
               print("Opening $url...");
             },
@@ -390,16 +391,50 @@ class MethodePresentationScreenState extends State<MethodePresentationScreen> {
   }
 }
 
-
-class MethodeAvantageScreen extends StatefulWidget {
-  MethodeAvantageScreen({Key key, this.methode}) : super(key: key);
+class MethodeInconvenientScreen extends StatefulWidget {
+  MethodeInconvenientScreen({Key key, this.methode}) : super(key: key);
   Methode methode;
+
   @override
-  State createState() => new MethodeAvantageScreenState();
+  State createState() => new MethodeInconvenientScreenState();
 }
 
-class MethodeAvantageScreenState extends State<MethodeAvantageScreen> {
-  MethodeAvantageScreenState();
+class MethodeInconvenientScreenState extends State<MethodeInconvenientScreen> {
+  MethodeInconvenientScreenState();
+  bool isLoading = false;
+
+  @override
+  void initState() { 
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Ecouter un audio',
+        child: const Icon(MdiIcons.headphones),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Text("${widget.methode.inconvenient}" , style: TextStyle(fontSize: 20)),
+      ),
+    );
+  }
+}
+
+
+
+class MethodeCentresScreen extends StatefulWidget {
+  MethodeCentresScreen({Key key, this.methode}) : super(key: key);
+  Methode methode;
+  @override
+  State createState() => new MethodeCentresScreenState();
+}
+
+class MethodeCentresScreenState extends State<MethodeCentresScreen> {
+  MethodeCentresScreenState();
   bool isLoading = false;
   List centres = [];
 
@@ -410,13 +445,13 @@ class MethodeAvantageScreenState extends State<MethodeAvantageScreen> {
       {
         'id': 1,
         'nom': "Centre 1",
-        'image': 'images/cart1.PNG',
+        'image': 'images/cart1.png',
         'dispo': true
       },
       {
         'id': 1,
         'nom': "Centre 1",
-        'image': 'images/cart2.PNG',
+        'image': 'images/cart2.png',
         'dispo': false
       },
       {
@@ -477,9 +512,7 @@ class MethodeAvantageScreenState extends State<MethodeAvantageScreen> {
                 color: Colors.black12,
                 child: Image.asset(
                   centres[index]['image'],
-                  width: 200.0,
-                  height: 200.0,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               )
             ],
@@ -491,16 +524,20 @@ class MethodeAvantageScreenState extends State<MethodeAvantageScreen> {
 }
 
 
-class MethodeInconvenientScreen extends StatefulWidget {
-  MethodeInconvenientScreen({Key key, this.methode}) : super(key: key);
+
+
+
+
+class MethodeAvantageScreen extends StatefulWidget {
+  MethodeAvantageScreen({Key key, this.methode}) : super(key: key);
   Methode methode;
 
   @override
-  State createState() => new MethodeInconvenientScreenState();
+  State createState() => new MethodeAvantageScreenState();
 }
 
-class MethodeInconvenientScreenState extends State<MethodeInconvenientScreen> {
-  MethodeInconvenientScreenState();
+class MethodeAvantageScreenState extends State<MethodeAvantageScreen> {
+  MethodeAvantageScreenState();
   bool isLoading = false;
 
   @override
@@ -516,40 +553,10 @@ class MethodeInconvenientScreenState extends State<MethodeInconvenientScreen> {
         tooltip: 'Ecouter un audio',
         child: const Icon(MdiIcons.headphones),
       ),
-      body: Text("${widget.methode.inconvenient}"),
-    );
-  }
-}
-
-
-
-
-class MethodeCentresScreen extends StatefulWidget {
-  MethodeCentresScreen({Key key, this.methode}) : super(key: key);
-  Methode methode;
-
-  @override
-  State createState() => new MethodeCentresScreenState();
-}
-
-class MethodeCentresScreenState extends State<MethodeCentresScreen> {
-  MethodeCentresScreenState();
-  bool isLoading = false;
-
-  @override
-  void initState() { 
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Ecouter un audio',
-        child: const Icon(MdiIcons.headphones),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Text("${widget.methode.avantage}", style: TextStyle(fontSize: 20),),
       ),
-      body: Text("Inconvenient de la methode ${widget.methode.title}"),
     );
   }
 }
